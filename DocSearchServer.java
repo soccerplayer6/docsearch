@@ -41,6 +41,7 @@ class Handler implements URLHandler {
            return String.format("There are %d total files to search.", paths.size());
        } else if (url.getPath().equals("/search")) {
            String[] parameters = url.getQuery().split("=");
+           System.out.println("test: " + parameters[1]);
            if (parameters[0].equals("q")) {
                String result = "";
                List<String> foundPaths = new ArrayList<>();
@@ -71,6 +72,8 @@ class DocSearchServer {
         }
 
         int port = Integer.parseInt(args[0]);
+        System.out.println("check: " + args[0]);
+        System.out.println("check: " + args[1]);
 
         Server.start(port, new Handler(args[1]));
     }
